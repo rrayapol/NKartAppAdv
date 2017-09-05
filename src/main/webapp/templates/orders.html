@@ -1,0 +1,63 @@
+
+
+
+    <div class="container"  ng-controller="orderController">
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <a class="navbar-brand" href="#">NCart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <span class="nav-link" >{{username}}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#/products">Products</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#/orders">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>          
+            </div>
+        </nav>
+        
+        <!-- Container -->
+        <div style="margin-top:5rem;margin-bottom:5rem">
+        <h5>MY CART({{cartCount}})</h5>
+            <p class="text-center" style="margin-top:5rem">{{message}}</p>
+            <div class="card" ng-repeat="order in orders" style="margin-top:1rem;padding:2em">
+             <div class="row">
+              <div class="col-xs-6">
+              <div class="card-block">
+              <img class="card-img-top" style="max-height:100px;max-width:150px" ng-src="{{order.imageUrl}}" alt="Card image cap"></img><br/><br/>
+             <div class="input-group plus-minus-input">
+  
+  <input class="input-group-field" style="max-height:50px;max-width:50px" type="number" name="quantity" value="order.quantity" min="1" ng-model="order.quantity">
+  
+</div>
+
+              </div>
+              </div>
+             <div class="col-xs-6">
+                <div class="card-block">
+                    <h4 class="card-title">{{order.productName}}</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Order ID : {{order.orderId}}</h6>
+                    <p class="card-text">Total Amount : {{order.amount * order.quantity }}</p>
+                    <a href="#" class="card-link">Time : {{order.timeStamp}}</a><br/>
+                    <button type="button" class="btn btn-default" ng-click="removeOrder(order.orderId)">REMOVE</button>
+                </div>
+                </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary float-right btn-sm" ng-hide= "cartCount == 0" ng-click="navigateToOrderPayment(orders)">PLACE ORDER</button>
+        </div>
+    </div>
+
+
+

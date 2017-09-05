@@ -1,0 +1,11 @@
+.h1 {
+	float:right;
+	background-color: #f11111;
+	font-size:100px;
+	margin-left:10rem;
+}
+
+.p {
+	background-color: #f7f7f7;
+	margin-top:200px; 
+}

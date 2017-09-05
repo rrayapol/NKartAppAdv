@@ -1,0 +1,60 @@
+<div style="background-color:#008000" ng-controller="paymentController">
+<div style="margin-left:27rem;margin-top:4rem"><h3><b>ORDER DETAILS</b></h3></div>
+<div style="margin-top:2rem;margin-bottom:5rem;margin-left:27rem" >
+<table >
+<tr>
+<td>Invoice No:</td><td>{{invoiceNo}}</td>
+</tr>
+<tr>
+<td>Order Date:</td><td>{{orderDate | date:'dd-MMM-yyyy'}}</td>
+</tr>
+<tr>
+<td>Order Month</td><td>{{orderDate | date:'MMM'}}</td>
+</tr>
+<tr>
+<td>Invoice Date:</td><td>{{orderDate | date:'dd-MMM-yyyy'}}</td>
+</tr>
+</table>
+</div>
+
+<div style="margin-top:5rem;margin-bottom:10rem;margin-left:20rem" ng-controller="paymentController">
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+<table>
+<thead><tr>
+<th>SI NO</th>
+<th>DESCRIPTION</th>
+<th>QUANTITY</th>
+<th>PRICE</th>
+<th>DISCOUNT</th>
+<th>TOTAL</th>
+</tr>
+</thead>
+<tbody>
+  <tr ng-repeat="order in paymentOrders">
+    <td>{{paymentNo+$index}}</td>
+    <td>{{ order.productName }}</td>
+    <td>{{ order.quantity }}</td>
+    <td>{{ order.amount }}</td>
+    <td>{{ 0.0 }}</td>
+    <td>{{ order.amount * order.quantity }}</td>
+  </tr>
+  <tr>
+  <td colspan="5" align="center">Total:</td><td>{{totalAmount}}</td>
+  </tr>
+  </tbody>
+</table>
+
+</div>
+</div>

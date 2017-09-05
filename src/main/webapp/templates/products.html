@@ -1,0 +1,62 @@
+
+<body>
+    <div class="container"  ng-controller="productController">
+
+        <!-- Navigation Pane -->
+        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <a class="navbar-brand" href="#">NCart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <span class="nav-link" >{{username}}</span>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#/products">Products</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#/orders">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <input type="text" class="form-control mr-sm-2" id="search" ng-model="search" bs-options="product for product in products" placeholder="Search" bs-typeahead>
+                    <button class="btn btn-primarymy-2 my-sm-0" type="submit" ng-click="searchfunc()">Search</button> &nbsp;
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="clear()">Clear</button>
+                </form>
+            </div>
+        </nav>
+
+        <!-- Main Container -->
+        <div style="margin-top:10rem">
+            <div class="card" style="width:20rem;height:450px;float:left;padding:1rem; margin-bottom:2rem; margin-left:2rem" ng-repeat="product in products">
+                <img class="card-img-top" style="max-height:250px" ng-src="{{product.imageUrl}}" alt="Card image cap"></img>
+                <div class="card-block">
+                    <h4 class="card-title">{{product.name}}</h4>
+                    <p class="card-text">{{product.description}}</p>
+                    
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">INR {{product.price}}</li>
+                    <!-- <li class="list-group-item">{{product.location}}</li>
+                <li class="list-group-item">{{product.username}}</li> -->
+                </ul>
+                <div class="card-footer text-muted"> {{product.seller}}</div>
+                <div class="card-block text-center" style="padding-top:10px">
+                <button class="btn btn-secondary" ng-show="!product.ordered" ng-click="placeOrder(product)">ADD TO CART</button>
+                <button class="btn btn-secondary" ng-show="product.ordered" ng-click="navigationToOrders()">GO TO CART</button>&nbsp;
+                <button class="btn btn-secondary" ng-click="navigateToPayment(product)">BUY NOW</button></div>
+            </div>
+        </div>
+        <br></br>
+    </div>
+    
+   
+   
+</body>
+
+</html>

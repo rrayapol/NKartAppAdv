@@ -1,0 +1,32 @@
+<div class="container text-center" style="margin-top: 10em" ng-controller="loginController">
+
+<div style="color : green;margin-top: 5em" >
+<span >{{activationMessage}}</span></div>
+
+        <h1> Login</h1>
+        <br></br>
+        <div class="container" style="width:50%;margin-left:16em">
+            <div >
+                <form ng-submit="authenticate()">
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="username" placeholder="Username" ng-model="username" ng-required='true'></input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="password" class="form-control" id="password" placeholder="Password" ng-model="password" ng-required='true'></input>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-sm-6 col-sm-12">
+                            <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                        </div>
+                    </div>
+                     </form>
+            </div>
+        </div>
+        
+        <div style="color : red;margin-top: 2em" ><span >{{errorMessage}}</span></div>
+    </div>
+    
