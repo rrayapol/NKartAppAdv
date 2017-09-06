@@ -1,1 +1,6 @@
 
+applications:
+  name: springboot-first
+  memory: 512M
+  host: springboot-first
+  path: target/gs-spring-boot-0.1.0.jar
