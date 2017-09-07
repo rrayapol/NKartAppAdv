@@ -27,6 +27,8 @@ public class AppManageControllerTest {
 	@Mock
 	AppMangerService appService;
 
+String name = “rakesh”;
+
 	@Test
 	public void testGetOrders() {
 
