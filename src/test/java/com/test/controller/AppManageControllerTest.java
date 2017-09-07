@@ -5,6 +5,8 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +29,9 @@ public class AppManageControllerTest {
 	@Mock
 	AppMangerService appService;
 
-String name = “rakesh”;
+	
+	@Mock
+	HttpSession httpSession;
 
 	@Test
 	public void testGetOrders() {
@@ -39,9 +43,9 @@ String name = “rakesh”;
 
 		orders.add(o1);
 		orders.add(o2);
-		when(appService.getOrders(null)).thenReturn(orders);
+		when(appService.getOrders(httpSession)).thenReturn(orders);
 
-		List<Order> result = appController.getOrders(null);
+		List<Order> result = appController.getOrders(httpSession);
 
 		Assert.assertEquals(result.size(), 2);
 
@@ -57,9 +61,9 @@ String name = “rakesh”;
 
 		products.add(p1);
 		products.add(p2);
-		when(appService.getProducts(null)).thenReturn(products);
+		when(appService.getProducts(httpSession)).thenReturn(products);
 
-		List<Product> result = appController.getProducts(null);
+		List<Product> result = appController.getProducts(httpSession);
 
 		Assert.assertEquals(result.size(), 2);
 
@@ -69,9 +73,9 @@ String name = “rakesh”;
 	public void testCreateOrder() {
 
 		Product p = new Product();
-		when(appService.createOrder(p, null)).thenReturn(new Message("success"));
+		when(appService.createOrder(p, httpSession)).thenReturn(new Message("success"));
 
-		Message result = appController.createOrder(p, null);
+		Message result = appController.createOrder(p, httpSession);
 
 		Assert.assertEquals(result.getMessage(), "success");
 
